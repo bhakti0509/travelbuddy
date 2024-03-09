@@ -1,13 +1,8 @@
-#Importing required modules
-
 from google.cloud import firestore
-import json
-
 import tkinter as tk
 import os
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
-from src.database.firebase_connector import db
 from src.database.user_repo import save_user_info
 
 
@@ -100,21 +95,21 @@ class LoginPage:
         self.TB_left_frame.pack(side=tk.LEFT)
     
         script_directory = os.path.dirname(os.path.abspath(__file__))
-        img_path = os.path.join(script_directory, "../assets/TBLogoFinal.png")
+        img_path = os.path.join(script_directory, "../../assets/TBLogoFinal.png")
         img = ImageTk.PhotoImage(Image.open(img_path))
         self.logo = tk.Label(self.new_window, image=img, background="#00072D")
         self.logo.image = img
         self.logo.pack()
         self.logo.place(x=0, y=0, anchor="nw")
 
-        img2_path = os.path.join(script_directory,"../assets/pune-darshan.jpg")
+        img2_path = os.path.join(script_directory,"../../assets/pune-darshan.jpg")
         img2 = ImageTk.PhotoImage(Image.open(img2_path))
         self.img2place = tk.Label(self.new_window,image= img2)
         self.img2place.image = img2
         self.img2place.pack()
         self.img2place.place(x=1005,y=500, anchor= 'nw')
 
-        img3_path = os.path.join(script_directory,"../assets/img3Final.jpg")
+        img3_path = os.path.join(script_directory,"../../assets/img3Final.jpg")
         img3 = ImageTk.PhotoImage(Image.open(img3_path))
         self.img3place = tk.Label(self.new_window,image= img3)
         self.img3place.image = img3
