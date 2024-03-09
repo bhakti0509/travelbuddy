@@ -1,6 +1,3 @@
-# user_authentication.py
-
-from tkinter import messagebox
 from src.database.firebase_connector import db
 
 def save_user_info(username, email, password):
@@ -11,9 +8,8 @@ def save_user_info(username, email, password):
             'email': email,
             'password': password
         })
-        messagebox.showinfo("Success", "Sign up successful.")
         return True
 
     except Exception as e:
-        messagebox.showerror("Error", f"Failed to sign up: {e}")
+        print("Error", f"Failed to sign up: {e}")
         return False
