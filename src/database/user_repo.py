@@ -1,7 +1,7 @@
 # user_authentication.py
 
 from tkinter import messagebox
-from firebase_connector import db
+from src.database.firebase_connector import db
 
 def save_user_info(username, email, password):
     try:

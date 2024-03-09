@@ -8,7 +8,7 @@ import os
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
 from src.database.firebase_connector import db
-from src.database.user_authenticator import save_user_info
+from src.database.user_repo import save_user_info
 
 
 class LoginPage:
