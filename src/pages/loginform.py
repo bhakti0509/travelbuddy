@@ -98,12 +98,12 @@ class LoginPage:
             self.sign_up_button.place_forget()
             self.email_label.place_forget()
             self.email_entry.place_forget()
-            self.login_button.place(x=350, y=300, anchor='nw')
+            self.login_button.place(x=350, y=350, anchor='nw')
             self.is_sign_up = False
         else:
             self.email_label.place(x = 100,y=150)
             self.email_entry.place(x=250, y = 150)
-            self.sign_up_button.place(x=350, y=300, anchor='nw')
+            self.sign_up_button.place(x=350, y=350, anchor='nw')
             self.login_button.place_forget()
             self.is_sign_up = True
 
