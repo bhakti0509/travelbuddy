@@ -7,14 +7,8 @@ import tkinter as tk
 import os
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
-
-#Firebase connectivity
-
-credentials_path = '/home/bhakti/Desktop/TravelBuddy/pythontkinterproject-firebase-adminsdk-7yprp-dac553bdea.json'
-with open(credentials_path)as json_file:
-    credentials_info = json.load(json_file)
-
-db = firestore.Client.from_service_account_info(credentials_info)
+from src.database.firebase_connector import db
+from src.database.user_authenticator import save_user_info
 
 
 class LoginPage:
@@ -68,29 +62,10 @@ class LoginPage:
             return
         
         messagebox.showinfo("Success", "Sign up successful.")
-        '''
-        try:
-
-            doc_ref = db.collection('users').document(username)
-            doc_ref.set({
-                'username': username,
-                'email': email,
-                'password': password
-            })
-            messagebox.showinfo("Success", "Sign up successful.")
-
-        except Exception as e:
-            messagebox.showerror("Error", f"Failed to sign up: {e}")
-        '''
+        
+        # Save user info to the database
+        save_user_info(username, email, password)
         self.firstPage()
-        '''
-        # Add a new document with a generated ID
-        doc_ref = db.collection(u'users').document(username)
-        doc_ref.set({
-            u'username': username,
-            u'password': password
-        })
-        '''
 
     def login(self):
         username = self.username_entry.get()
