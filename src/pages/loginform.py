@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
+from src.pages.home import FirstPage
 
 class LoginPage:
     def __init__(self):
@@ -70,6 +71,7 @@ class LoginPage:
             return
 
         messagebox.showinfo("Success", "Sign up successful.")
+        FirstPage()
 
     def login(self):
         username = self.username_entry.get()
@@ -80,6 +82,7 @@ class LoginPage:
             return
 
         messagebox.showinfo("Success", "Login successful.")
+        FirstPage()
 
     def toggle_email_entry(self):
         # Toggle visibility of email label and entry
@@ -99,3 +102,4 @@ class LoginPage:
     def run(self):
         # Run the Tkinter main loop
         self.TB_root.mainloop()
+    
