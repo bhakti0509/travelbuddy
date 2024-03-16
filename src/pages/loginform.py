@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-from src.pages.home import FirstPage
+from src.pages.home import HomePage
+from src.database.user_repo import save_user_info, get_user_info
 
 class LoginPage:
     def __init__(self):
@@ -69,9 +70,15 @@ class LoginPage:
         if not username or not email or not password:
             messagebox.showerror("Error", "Please fill all the required credentials.")
             return
+        
+        if not save_user_info(username, email, password):
+            messagebox.showerror("Error", "Please fill all the required credentials.")
+            return
 
         messagebox.showinfo("Success", "Sign up successful.")
-        FirstPage()
+        self.TB_root.destroy()
+        app = HomePage()
+        app.run()
 
     def login(self):
         username = self.username_entry.get()
@@ -80,9 +87,15 @@ class LoginPage:
         if not username  or not password:
             messagebox.showerror("Error", "Please fill all the required credentials.")
             return
+        
+        if not get_user_info(username, password):
+            messagebox.showerror("Error", "Invalid credentials.")
+            return
 
         messagebox.showinfo("Success", "Login successful.")
-        FirstPage()
+        self.TB_root.destroy()
+        app = HomePage()
+        app.run()
 
     def toggle_email_entry(self):
         # Toggle visibility of email label and entry

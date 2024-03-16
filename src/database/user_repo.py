@@ -16,12 +16,16 @@ def save_user_info(username, email, password):
     
 def get_user_info(username, password):
     try:
-        doc_ref = db.collection('users').document(username)
-        doc_ref.set({
-            'username': username,
-            'password': password
-        })
-        return True
+        # Get the user document with matching username 
+        user_ref = db.collection('users').document(username)
+        user = user_ref.get()
+        user_data = user.to_dict()
+        
+        # Check if the user exists and the password is correct
+        if user.exists and user_data['password'] == password:
+            return True
+        else:
+            return False
 
     except Exception as e:
         print("Error", f"Failed to sign up: {e}")
